@@ -28,7 +28,11 @@ cd build/tests
 ./unit_test --log_level=message
 
 ## deploy
+### jungle
 cleos -u http://jungle.cryptolions.io:18888 set contract eoseoultwcvr twcvr/bin/twcvr/ -p eoseoultwcvr
+
+### live
+cleos -u user-api.eoseoul.io set contract eoseoultwcvr twcvr/bin/twcvr/ -p eoseoultwcvr
 
 ## Actions
 Note: When the required authority is `_self`, it means that the authority of the contract account is required.
