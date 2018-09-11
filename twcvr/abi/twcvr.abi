@@ -1,0 +1,85 @@
+{
+    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT Mon Sep 10 15:53:51 2018",
+    "version": "eosio::abi/1.0",
+    "structs": [
+        {
+            "name": "musicscore",
+            "base": "",
+            "fields": [
+                {
+                    "name": "music_id",
+                    "type": "uint16"
+                },
+                {
+                    "name": "score",
+                    "type": "uint32"
+                }
+            ]
+        },
+        {
+            "name": "record",
+            "base": "",
+            "fields": [
+                {
+                    "name": "owner",
+                    "type": "name"
+                },
+                {
+                    "name": "scores",
+                    "type": "musicscore[]"
+                }
+            ]
+        },
+        {
+            "name": "regrecord",
+            "base": "",
+            "fields": [
+                {
+                    "name": "owner",
+                    "type": "name"
+                },
+                {
+                    "name": "music_id",
+                    "type": "uint16"
+                },
+                {
+                    "name": "score",
+                    "type": "uint32"
+                }
+            ]
+        }
+    ],
+    "types": [
+        {
+            "new_type_name": "account_name",
+            "type": "name"
+        },
+        {
+            "new_type_name": "uint16_t",
+            "type": "uint16"
+        },
+        {
+            "new_type_name": "uint32_t",
+            "type": "uint32"
+        }
+    ],
+    "actions": [
+        {
+            "name": "regrecord",
+            "type": "regrecord",
+            "ricardian_clauses": "# Action - `{{ regrrecord }}`\n\n## Description\n\nThe intent of the `{{ regrecord }}` action is to record `{{ uint32_t score }}` of `{{ uint16_t music_id }}` toward a `{{ owner }}` according to the rules of the game."
+        }
+    ],
+    "tables": [
+        {
+            "name": "records",
+            "type": "record",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        }
+    ],
+    "ricardian_clauses": [],
+    "error_messages": [],
+    "abi_extensions": []
+}
