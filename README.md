@@ -1,5 +1,5 @@
-# twcvr
-## Version : 1.2.0
+# Tapsonic World Champion VR Contract
+## Version : 1.1.0
 
 These smart contracts are referred to game score.
 
