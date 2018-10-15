@@ -17,7 +17,9 @@ namespace twcvr {
             using contract::contract;
 
             // record.hpp
-            [[eosio::action]]
-            void regrecord(name owner, uint16_t music_id, uint32_t score );
+            [[eosio::action]] void regrecord(name owner, uint16_t music_id, uint32_t score, string hash);
+
+        private:
+            // bool validate_hash(name owner, uint16_t music_id, uint32_t score, string hash);
     };
 } // twcvr

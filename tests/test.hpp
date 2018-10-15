@@ -30,9 +30,9 @@ struct musicscore_t {
 FC_REFLECT( musicscore_t, (music_id)(score) );
 
 struct record_t {
-    account_name owner;
+    name owner;
     vector<musicscore_t> scores;
-    uint64_t primary_key() const { return owner; }
+    uint64_t primary_key() const { return owner.value; }
 };
 
 FC_REFLECT( record_t, (owner)(scores) );

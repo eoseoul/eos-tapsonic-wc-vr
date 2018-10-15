@@ -7,7 +7,7 @@ namespace twcvr {
     using std::vector;
     using namespace eosio;
 
-    struct musicscore {
+    struct [[eosio::table, eosio::contract("twcvr")]] musicscore {
         uint16_t music_id;
         uint32_t score;
         bool operator == (const musicscore& rhs) {
@@ -18,10 +18,11 @@ namespace twcvr {
         EOSLIB_SERIALIZE( musicscore, (music_id)(score) );
     };
 
-    struct [[eosio::table]] record {
+    struct [[eosio::table, eosio::contract("twcvr")]] record {
         name owner;
         vector<musicscore> scores;
         uint64_t primary_key() const { return owner.value; }
+
         EOSLIB_SERIALIZE( record, (owner)(scores) );
     };
     typedef eosio::multi_index< "records"_n, record> record_table;

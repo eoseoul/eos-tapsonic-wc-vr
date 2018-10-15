@@ -34,26 +34,14 @@
             "name": "regrecord",
             "base": "",
             "fields": [
-                {
-                    "name": "owner",
-                    "type": "name"
-                },
-                {
-                    "name": "music_id",
-                    "type": "uint16"
-                },
-                {
-                    "name": "score",
-                    "type": "uint32"
-                }
+                { "name": "owner", "type": "name" },
+                { "name": "music_id", "type": "uint16" },
+                { "name": "score", "type": "uint32" },
+                { "name": "hash", "type": "string" }
             ]
         }
     ],
     "types": [
-        {
-            "new_type_name": "name",
-            "type": "name"
-        },
         {
             "new_type_name": "uint16_t",
             "type": "uint16"

@@ -5,7 +5,7 @@ public:
    record_tester() {
     create_accounts( {/*N(eosio.token),*/ N(eoseoultwcvr)} );
     produce_block();
-    create_accounts( {N(gameuseraaaa), N(gameuseraaab),  N(gameuseraaac),  N(gameuseraaad)} );
+    create_accounts( {N(wwforevernw1), N(gameuseraaab),  N(gameuseraaac),  N(gameuseraaad)} );
     produce_block();
 
 /*
@@ -41,9 +41,10 @@ BOOST_AUTO_TEST_SUITE(regrecord_tests)
 
 BOOST_FIXTURE_TEST_CASE( regrecord, record_tester ) try {
   auto record1_1 = mvo()
-      ("owner",  "gameuseraaaa")
-      ("music_id", 1)
-      ("score", 11);
+      ("owner",  "wwforevernw1")
+      ("music_id", 2)
+      ("score", 200)
+      ("hash", "2b25a7d86995207d340a39f55b3b4432e98259420b10d798db4f7a8fa562fdf1");
 
   auto record1_2 = mvo()
       ("owner",  "gameuseraaaa")
@@ -111,13 +112,17 @@ BOOST_FIXTURE_TEST_CASE( regrecord, record_tester ) try {
       ("score", 13);
 
   record_t r_gameuseraaaa;
-  auto trace = base_tester::push_action( N(eoseoultwcvr), N(regrecord), N(gameuseraaaa), record1_1);
+  auto trace = base_tester::push_action( N(eoseoultwcvr), N(regrecord), N(wwforevernw1), record1_1);
   produce_block();
+  BOOST_TEST_MESSAGE( fc::json::to_pretty_string(trace) );
+  return;
+
   trace = base_tester::push_action( N(eoseoultwcvr), N(regrecord), N(gameuseraaaa), record1_2);
   produce_block();
   trace = base_tester::push_action( N(eoseoultwcvr), N(regrecord), N(gameuseraaaa), record1_3);
 
   get_record(r_gameuseraaaa, N(gameuseraaaa));
+
   //BOOST_TEST_MESSAGE( fc::json::to_pretty_string(r_gameuseraaaa) );
   musicscore_t mscore1_3{static_cast<uint16_t>(record1_3["music_id"].as_uint64()),  static_cast<uint32_t>(record1_3["score"].as_uint64())};
   auto itr1_3 = std::find(r_gameuseraaaa.scores.begin(),r_gameuseraaaa.scores.end(), mscore1_3);
