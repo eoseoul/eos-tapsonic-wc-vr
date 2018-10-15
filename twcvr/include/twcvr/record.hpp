@@ -5,6 +5,7 @@
 namespace twcvr {
     using std::string;
     using std::vector;
+    using namespace eosio;
 
     struct musicscore {
         uint16_t music_id;
@@ -18,10 +19,10 @@ namespace twcvr {
     };
 
     struct [[eosio::table]] record {
-        account_name owner;
+        name owner;
         vector<musicscore> scores;
-        uint64_t primary_key() const { return owner; }
+        uint64_t primary_key() const { return owner.value; }
         EOSLIB_SERIALIZE( record, (owner)(scores) );
     };
-    typedef eosio::multi_index< N(records), record> record_table;
+    typedef eosio::multi_index< "records"_n, record> record_table;
 } // twcvr

@@ -4,11 +4,10 @@
 #include "record.cpp"
 
 namespace twcvr {
-	twcvr_contract::twcvr_contract(action_name self) : contract(self) {
-	}
+	// twcvr_contract::twcvr_contract(name self) : contract(self) { }
 };
 
-EOSIO_ABI( twcvr::twcvr_contract,
+EOSIO_DISPATCH( twcvr::twcvr_contract,
 	// record.hpp
 	(regrecord)
 )
