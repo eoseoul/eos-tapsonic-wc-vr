@@ -11,7 +11,7 @@ namespace twcvr {
         eosio_assert(score >= 0, "score should be more than equal 0 long");
         eosio_assert(hash.size() <= 64, "score should be equal 32 long");
 
-        // eosio_assert(validate_hash(owner, music_id, score, hash), "incorresct hash");
+        eosio_assert(validate_hash(owner, music_id, score, hash), "incorresct hash");
 
         //creates the records table if it doesn't exist already
         musicscore mscore{music_id, score};
