@@ -1,11 +1,11 @@
 # Tapsonic World Champion VR Contract
-## Version : 1.1.0
+## Version : 1.3.0
 
 These smart contracts are referred to game score.
 
 Dependencies:
-* [eosio v1.2.x](https://github.com/eosio/eos)
-* [eosio.cdt v1.2.x](https://github.com/eosio/eosio.cdt)
+* [eosio v1.3.x](https://github.com/eosio/eos)
+* [eosio.cdt v1.3.x](https://github.com/eosio/eosio.cdt)
 
 To build the contracts and the unit tests:
 * First, ensure that your __eosio__ is compiled to the core symbol for the EOSIO blockchain that intend to deploy to.
@@ -32,7 +32,7 @@ cd build/tests
 cleos -u http://jungle.cryptolions.io:18888 set contract eoseoultwcvr twcvr/bin/twcvr/ -p eoseoultwcvr
 
 ### live
-cleos -u user-api.eoseoul.io set contract eoseoultwcvr twcvr/bin/twcvr/ -p eoseoultwcvr
+cleos -u https://user-api.eoseoul.io set contract eoseoultwcvr twcvr/bin/twcvr/ -p eoseoultwcvr
 
 ## Actions
 Note: When the required authority is `_self`, it means that the authority of the contract account is required.
