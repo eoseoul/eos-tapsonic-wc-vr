@@ -20,14 +20,10 @@
             "name": "record",
             "base": "",
             "fields": [
-                {
-                    "name": "owner",
-                    "type": "name"
-                },
-                {
-                    "name": "scores",
-                    "type": "musicscore[]"
-                }
+                { "name": "owner", "type": "name" },
+                { "name": "scores", "type": "musicscore[]" },
+                { "name": "timestamp", "type": "uint64_t" },
+                { "name": "reserve_1", "type": "uint64_t" }
             ]
         },
         {
@@ -49,6 +45,10 @@
         {
             "new_type_name": "uint32_t",
             "type": "uint32"
+        },
+        {
+            "new_type_name": "uint64_t",
+            "type": "uint64"
         }
     ],
     "actions": [

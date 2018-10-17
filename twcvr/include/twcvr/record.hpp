@@ -21,9 +21,11 @@ namespace twcvr {
     struct [[eosio::table, eosio::contract("twcvr")]] record {
         name owner;
         vector<musicscore> scores;
+        uint64_t timestamp;
+        uint64_t reserve_1;
         uint64_t primary_key() const { return owner.value; }
 
-        EOSLIB_SERIALIZE( record, (owner)(scores) );
+        EOSLIB_SERIALIZE( record, (owner)(scores)(timestamp)(reserve_1) );
     };
     typedef eosio::multi_index< "records"_n, record> record_table;
 } // twcvr

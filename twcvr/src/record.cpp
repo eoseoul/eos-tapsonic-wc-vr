@@ -21,9 +21,11 @@ namespace twcvr {
             records.emplace(_self, [&](auto& record){
                 record.owner = owner;
                 record.scores.emplace_back(mscore);
+                record.timestamp = current_time();
             });
         } else {
             records.modify(itr, same_payer, [&](auto& new_record) {
+                new_record.timestamp = current_time();
                 auto itr_score = std::find(new_record.scores.begin(), new_record.scores.end(), mscore);
                 if (itr_score == new_record.scores.end()) {
                     new_record.scores.emplace_back(mscore);
@@ -33,4 +35,17 @@ namespace twcvr {
             });
         }
     }
+
+/*
+    void twcvr_contract::init() {
+        require_auth(_self);
+
+        //creates the records table if it doesn't exist already
+        record_table records(_self, _self.value);
+
+        for (auto iter = records.begin(); iter != records.end(); ) {
+            iter = records.erase(iter);
+        }
+    }
+*/
 } // twcvr

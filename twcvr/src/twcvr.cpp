@@ -10,4 +10,5 @@ namespace twcvr {
 EOSIO_DISPATCH( twcvr::twcvr_contract,
 	// record.hpp
 	(regrecord)
+	//(init)
 )

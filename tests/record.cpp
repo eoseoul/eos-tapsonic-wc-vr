@@ -5,7 +5,7 @@ public:
    record_tester() {
     create_accounts( {/*N(eosio.token),*/ N(eoseoultwcvr)} );
     produce_block();
-    create_accounts( {N(wwforevernw1), N(gameuseraaab),  N(gameuseraaac),  N(gameuseraaad)} );
+    create_accounts( {N(wwforevernw1), N(gameuseraaaa), N(gameuseraaab),  N(gameuseraaac),  N(gameuseraaad)} );
     produce_block();
 
 /*
@@ -49,74 +49,91 @@ BOOST_FIXTURE_TEST_CASE( regrecord, record_tester ) try {
   auto record1_2 = mvo()
       ("owner",  "gameuseraaaa")
       ("music_id", 2)
-      ("score", 12);
+      ("score", 12)
+      ("hash", "2b25a7d86995207d340a39f55b3b4432e98259420b10d798db4f7a8fa562fdf1");
 
   auto record1_3 = mvo()
       ("owner",  "gameuseraaaa")
       ("music_id", 3)
-      ("score", 13);
+      ("score", 13)
+      ("hash", "2b25a7d86995207d340a39f55b3b4432e98259420b10d798db4f7a8fa562fdf1");
 
   auto record1_3_2 = mvo()
       ("owner",  "gameuseraaaa")
       ("music_id", 3)
-      ("score", 23);
+      ("score", 23)
+      ("hash", "2b25a7d86995207d340a39f55b3b4432e98259420b10d798db4f7a8fa562fdf1");
 
   auto record1_3_3 = mvo()
       ("owner",  "gameuseraaaa")
       ("music_id", 3)
-      ("score", 33);
+      ("score", 33)
+      ("hash", "2b25a7d86995207d340a39f55b3b4432e98259420b10d798db4f7a8fa562fdf1");
 
   auto record2_1 = mvo()
       ("owner",  "gameuseraaab")
       ("music_id", 1)
-      ("score", 11);
+      ("score", 11)
+      ("hash", "2b25a7d86995207d340a39f55b3b4432e98259420b10d798db4f7a8fa562fdf1");
 
   auto record2_2 = mvo()
       ("owner",  "gameuseraaab")
       ("music_id", 2)
-      ("score", 12);
+      ("score", 12)
+      ("hash", "2b25a7d86995207d340a39f55b3b4432e98259420b10d798db4f7a8fa562fdf1");
 
   auto record2_3 = mvo()
       ("owner",  "gameuseraaab")
       ("music_id", 3)
-      ("score", 13);
+      ("score", 13)
+      ("hash", "2b25a7d86995207d340a39f55b3b4432e98259420b10d798db4f7a8fa562fdf1");
 
   auto record3_1 = mvo()
       ("owner",  "gameuseraaac")
       ("music_id", 1)
-      ("score", 11);
+      ("score", 11)
+      ("hash", "2b25a7d86995207d340a39f55b3b4432e98259420b10d798db4f7a8fa562fdf1");
 
   auto record3_2 = mvo()
       ("owner",  "gameuseraaac")
       ("music_id", 2)
-      ("score", 12);
+      ("score", 12)
+      ("hash", "2b25a7d86995207d340a39f55b3b4432e98259420b10d798db4f7a8fa562fdf1");
 
   auto record3_3 = mvo()
       ("owner",  "gameuseraaac")
       ("music_id", 3)
-      ("score", 13);
+      ("score", 13)
+      ("hash", "2b25a7d86995207d340a39f55b3b4432e98259420b10d798db4f7a8fa562fdf1");
 
   auto record4_1 = mvo()
       ("owner",  "gameuseraaad")
       ("music_id", 1)
-      ("score", 11);
+      ("score", 11)
+      ("hash", "2b25a7d86995207d340a39f55b3b4432e98259420b10d798db4f7a8fa562fdf1");
 
   auto record4_2 = mvo()
       ("owner",  "gameuseraaad")
       ("music_id", 2)
-      ("score", 12);
+      ("score", 12)
+      ("hash", "2b25a7d86995207d340a39f55b3b4432e98259420b10d798db4f7a8fa562fdf1");
 
   auto record4_3 = mvo()
       ("owner",  "gameuseraaad")
       ("music_id", 3)
-      ("score", 13);
+      ("score", 13)
+      ("hash", "2b25a7d86995207d340a39f55b3b4432e98259420b10d798db4f7a8fa562fdf1");
 
-  record_t r_gameuseraaaa;
+  record_t wwforevernw1;
   auto trace = base_tester::push_action( N(eoseoultwcvr), N(regrecord), N(wwforevernw1), record1_1);
   produce_block();
   BOOST_TEST_MESSAGE( fc::json::to_pretty_string(trace) );
+  get_record(wwforevernw1, N(wwforevernw1));
+  BOOST_TEST_MESSAGE( fc::json::to_pretty_string(wwforevernw1) );
+
   return;
 
+  record_t r_gameuseraaaa;
   trace = base_tester::push_action( N(eoseoultwcvr), N(regrecord), N(gameuseraaaa), record1_2);
   produce_block();
   trace = base_tester::push_action( N(eoseoultwcvr), N(regrecord), N(gameuseraaaa), record1_3);
@@ -166,6 +183,9 @@ BOOST_FIXTURE_TEST_CASE( regrecord, record_tester ) try {
   trace = base_tester::push_action( N(eoseoultwcvr), N(regrecord), N(gameuseraaad), record4_2);
   produce_block();
   trace = base_tester::push_action( N(eoseoultwcvr), N(regrecord), N(gameuseraaad), record4_3);
+
+  //trace = base_tester::push_action( N(eoseoultwcvr), N(init), N(eoseoultwcvr), mvo());
+  produce_block();
 
   record_t r_gameuseraaad;
   get_record(r_gameuseraaad, N(gameuseraaad));
